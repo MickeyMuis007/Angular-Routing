@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AuthService } from './user/auth.service';
 
@@ -21,10 +22,14 @@ export class AppComponent {
     return '';
   }
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+    private router: Router) { }
 
   logOut(): void {
     this.authService.logout();
     console.log('Log out');
+
+    // Using navigateByUrl to ensure that any parameters or secondary routes are removed when logging out
+    this.router.navigateByUrl('/welcome');
   }
 }
