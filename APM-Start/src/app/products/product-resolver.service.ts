@@ -13,7 +13,12 @@ export class ProductResolver implements Resolve<Product> {
     constructor(private productService: ProductService) { }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Product> {
-        const id = +route.paramMap.get('id');
-        return this.productService.getProduct(id);
+        const id = route.paramMap.get('id');
+        if (isNaN(+id)) {
+            const message = 'Product id was not a number: ${id}';
+            console.error(message);
+            return; // ???
+        }
+        return this.productService.getProduct(+id);
     }
 }
