@@ -7,7 +7,7 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
 
 import { SharedModule } from '../shared/shared.module';
 
-import { ProductResolver } from './product-resolver.service'; 
+import { ProductResolver } from './product-resolver.service';
 
 @NgModule({
   imports: [
